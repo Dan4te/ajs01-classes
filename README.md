@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/0v5gxl4sp992p23g?svg=true)]
+![Build status](https://ci.appveyor.com/api/projects/status/0v5gxl4sp992p23g?svg=true)
 
 # Домашнее задание к лекции «Классы, наследование»
 
