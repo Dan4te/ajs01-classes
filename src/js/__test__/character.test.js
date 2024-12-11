@@ -1,40 +1,60 @@
 import Character from '../character.js';
 
-test('New character with invalid name (too short)', () => {
-    expect(
-        () => new Character('O', 'Bowman', 100, 100),
-    ).toThrow('Invalid name length');
+test('should check the class Character no name < 2', () => {
+  expect(() => new Character('a', 'Bowman')).toThrowError(new Error('Ошибка'));
 });
 
-test('New character with invalid name (too long)', () => {
-    expect(
-        () => new Character('LooooooongName', 'Daemon', 100, 100),
-    ).toThrow('Invalid name length');
+test('should check the class Character no name', () => {
+  expect(() => new Character('Player', 'Hero')).toThrowError(new Error('Ошибка'));
 });
 
-test('New character with invalid character type', () => {
-    expect(
-        () => new Character('Bowy', 'FakeBowman', 100, 100),
-    ).toThrow('Invalid character type');
+test('should check the class Character no name', () => {
+  const character = new Character('Player', 'Magician');
+  expect(character.name).toBe('Player');
 });
 
-test('Inflict damage to character', () => {
-    const testChar = new Character('Bowy', 'Bowman', 25, 25);
-    testChar.damage(50);
-    expect(testChar).toEqual({
-        name: 'Bowy',
-        type: 'Bowman',
-        health: 62.5,
-        level: 1,
-        attack: 25,
-        defence: 25,
-    });
+test('should check the class Character no name', () => {
+  const character = new Character('Player', 'Magician');
+  expect(character.type).toBe('Magician');
+});
+test('should check the class Character no name', () => {
+  const character = new Character('Player', 'Magician');
+  const result = {
+    name: 'Player',
+    type: 'Magician',
+    health: 100,
+    level: 1,
+  };
+  expect(character).toMatchObject(result);
 });
 
-test('Go to the next level with zero health', () => {
-    const testChar = new Character('Bowy', 'Bowman', 25, 25);
-    testChar.health = 0;
-    expect(() => testChar.levelUp()).toThrow(
-        'You cannot raise the level with zero health',
-    );
+test('should levelUp the defence', () => {
+  const character = new Character('Player', 'Magician');
+  character.health = 0;
+  expect(() => character.levelUp()).toThrowError(new Error('Нельзя повысить уровень, умер'));
+});
+
+test('should levelUp the defence', () => {
+  const character = new Character('Player', 'Magician');
+  character.attack = 10;
+  character.defence = 10;
+  character.levelUp();
+  expect(character.health).toBe(100);
+  expect(character.attack).toBe(12);
+  expect(character.defence).toBe(12);
+  expect(character.level).toBe(2);
+});
+
+test('should points damage the health', () => {
+  const character = new Character('Player', 'Magician');
+  character.defence = 10;
+  character.damage(50);
+  expect(character.health).toBe(55);
+});
+
+test('should points damage the health', () => {
+  const character = new Character('Player', 'Magician');
+  character.defence = 10;
+  character.damage(500);
+  expect(character.health).toBe(0);
 });

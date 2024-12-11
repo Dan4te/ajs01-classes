@@ -1,13 +1,14 @@
-import Magician from '../magician.js';
+import Character from '../magician.js';
 
-test('New Magician', () => {
-    const magician = new Magician('Magy');
-    expect(magician).toEqual({
-        name: 'Magy',
-        type: 'Magician',
-        health: 100,
-        level: 1,
-        attack: 10,
-        defence: 40,
-    });
+test('should check the class Magition', () => {
+  const character = new Character('Player', 'Magician');
+  const result = {
+    name: 'Player',
+    type: 'Magician',
+    health: 100,
+    level: 1,
+    attack: 10,
+    defence: 40,
+  };
+  expect(character).toMatchObject(result);
 });

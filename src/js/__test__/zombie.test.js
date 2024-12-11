@@ -1,13 +1,14 @@
-import Zombie from '../zombie.js';
+import Character from '../zombie.js';
 
-test('New Zombie', () => {
-    const zombie = new Zombie('Zomy');
-    expect(zombie).toEqual({
-        name: 'Zomy',
-        type: 'Zombie',
-        health: 100,
-        level: 1,
-        attack: 40,
-        defence: 10,
-    });
+test('should check the class Zombie', () => {
+  const character = new Character('Player', 'Zombie');
+  const result = {
+    name: 'Player',
+    type: 'Zombie',
+    health: 100,
+    level: 1,
+    attack: 40,
+    defence: 10,
+  };
+  expect(character).toMatchObject(result);
 });

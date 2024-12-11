@@ -1,13 +1,14 @@
-import Swordsman from '../swordsman.js';
+import Character from '../swordsman.js';
 
-test('New Swordsman', () => {
-    const swordsman = new Swordsman('Swordy');
-    expect(swordsman).toEqual({
-        name: 'Swordy',
-        type: 'Swordsman',
-        health: 100,
-        level: 1,
-        attack: 40,
-        defence: 10,
-    });
+test('should check the class Swordsman', () => {
+  const character = new Character('Player', 'Swordsman');
+  const result = {
+    name: 'Player',
+    type: 'Swordsman',
+    health: 100,
+    level: 1,
+    attack: 40,
+    defence: 10,
+  };
+  expect(character).toMatchObject(result);
 });
